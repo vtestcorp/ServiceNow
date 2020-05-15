@@ -23,12 +23,12 @@ Feature: All related test scenarios to Incident User
     #And  Select "Cancel Incident" button top right
     #Then I verify that Incident can be cancelled
     
-    Scenario: Ensure that ITIL user role can create a new Incident
-    Given I authenticate as "Incident.User.1" with password "Spot$123"
-    When I Create New Incident
-    And  I search created Incident
-    Then I verify Incident found and Incident appears as saved
-    
+    #Scenario: Ensure that ITIL user role can create a new Incident
+    #Given I authenticate as "Incident.User.1" with password "Spot$123"
+    #When I Create New Incident
+    #And  I search created Incident
+    #Then I verify Incident found and Incident appears as saved
+    #
      Scenario: Ensure that "Number" field is autopopulated as with prefix INC with 7 digits starting at 10,000
     Given I authenticate as "Incident.User.1" with password "Spot$123"
     When I Create New Incident and get Incident Number Format

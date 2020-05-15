@@ -26,14 +26,34 @@ public class Incident_User extends base {
 	public WebElement history_tab;
 	@FindBy(xpath="//span[contains(text(),'Create Incident')]")
 	public WebElement create_incident;
-	@FindBy(xpath="//input[@id='sys_original.IO:3f272c500a0a0b990059c24380a2bc02']")
+	@FindBy(xpath="//span[contains(text(),'Incident')]")
+	public WebElement incident;
+	@FindBy(xpath="//a[@id='allApps_tab']")
+	public WebElement all_appstab;
+	@FindBy(xpath="//textarea[@id='IO:3f272c500a0a0b990059c24380a2bc02']")
 	public WebElement more_information;
 	@FindBy(xpath="//div[contains(text(),'Save')]")
 	public WebElement save_button;
 	@FindBy(xpath="//button[@id='submit_button']")
 	public WebElement submit_button;
-	@FindBy(xpath="//button[@id='sysverb_update']")
+	@FindBy(xpath="//button[@id='sysverb_update_bottom']")
 	public WebElement Update_button;
+	@FindBy(xpath="//span[@class='form_display_value']")
+	public WebElement get_IncidentNum;
+	@FindBy(xpath="//button[@class='list_header_search_toggle icon-search btn btn-icon table-btn-lg']")
+	public WebElement Search_button;
+	@FindBy(xpath="//input[@id='3eba15eddbf0101026bb48703996196b_table_header_search_control']")
+	public WebElement Search_field;
+	@FindBy(xpath="//tr[@id='hdr_057bd9eddbf0101026bb4870399619ce']//a[@class='column_head list_hdrcell table-col-header'][contains(text(),'Number')]")
+	public WebElement number_column;
+	@FindBy(xpath="//tr//td[3]")
+	public WebElement table_onerow;
+	@FindBy(xpath="//select[@id=\"IO:5a33d0ef0a0a0b9b007b906f6c589c57\"]")
+	public WebElement select_urgency;
+	
+	
+	
+	
 	
 	
 	public Incident_User()

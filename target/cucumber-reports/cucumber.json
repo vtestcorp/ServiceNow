@@ -1,0 +1,69 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 32,
+        "name": "Ensure that \"Number\" field is autopopulated as with prefix INC with 7 digits starting at 10,000",
+        "description": "",
+        "id": "all-related-test-scenarios-to-incident-user;ensure-that-\"number\"-field-is-autopopulated-as-with-prefix-inc-with-7-digits-starting-at-10-000",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 30777078700,
+              "status": "passed"
+            },
+            "line": 33,
+            "name": "I authenticate as \"Incident.User.1\" with password \"Spot$123\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Incident.User.1\"",
+                  "offset": 18
+                },
+                {
+                  "val": "\"Spot$123\"",
+                  "offset": 50
+                }
+              ],
+              "location": "login.iAuthenticateAsWithPassword(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 41563241901,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "I Create New Incident and get Incident Number Format",
+            "match": {
+              "location": "Incidentuser_action.iCreateNewIncidentandgetIncidentNumberFormat()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2884800,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "I verify Number field is autopopulated as with prefix INC with 7 digits starting at 10,000",
+            "match": {
+              "location": "Incidentuser_action.iverifyIncidentnumberformat()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "All related test scenarios to Incident User",
+    "description": "",
+    "id": "all-related-test-scenarios-to-incident-user",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/feature/IncidentUser.feature",
+    "tags": []
+  }
+]
