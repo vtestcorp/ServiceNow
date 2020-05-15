@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 import cucumber.api.CucumberOptions;
 
 @RunWith(Cucumber.class)//telling to run test as cucumber test
-@CucumberOptions(features="src\\test\\resources\\feature", glue="stepdefinations",
+@CucumberOptions(features="src\\test\\resources\\feature", glue="stepdefinitions",
 
 plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber-reports/cucumber.json" }
 )//path of feature file and step def class
