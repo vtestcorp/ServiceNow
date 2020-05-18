@@ -1,6 +1,6 @@
-C:\Users\Admin\git\ServiceNow\src\main\java\stepdefinations\login.java
 C:\Users\Admin\git\ServiceNow\src\main\java\common\base.java
 C:\Users\Admin\git\ServiceNow\src\main\java\page_objects\Incident_User.java
 C:\Users\Admin\git\ServiceNow\src\main\java\util\Utility.java
 C:\Users\Admin\git\ServiceNow\src\test\java\testrunner\testrunner_sample.java
-C:\Users\Admin\git\ServiceNow\src\main\java\stepdefinations\Incidentuser_action.java
+C:\Users\Admin\git\ServiceNow\src\main\java\stepdefinitions\Incidentuser_action.java
+C:\Users\Admin\git\ServiceNow\src\main\java\stepdefinitions\login.java

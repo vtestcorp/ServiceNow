@@ -1,6 +1,8 @@
 package stepdefinitions;
 import cucumber.api.java.en.Given;
+//import io.cucumber.java.After;
 import static org.junit.Assert.*;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import page_objects.Incident_User;
@@ -29,13 +31,11 @@ public String new_Incidentnum;
 	@When("I Create New Incident")
 	public void iCreateNewIncident() throws InterruptedException {
 		incidentuser=new Incident_User();
-		Utility.wait(incidentuser.history_tab);
-		incidentuser.history_tab.click();
-		incidentuser.create_incident.click();
 		Thread.sleep(10000);
 		driver.switchTo().frame(incidentuser.frame);
+		incidentuser.create_incident.click();
+		Thread.sleep(10000);
 		Utility.selectByText(incidentuser.select_urgency,"2 - Medium");
-		//Utility.wait(incidentuser.more_information);
 		incidentuser.more_information.sendKeys("Test Parent Incident");
 		Utility.wait(incidentuser.submit_button);
 		Utility.scrollToElement_N_click(incidentuser.submit_button);
@@ -46,11 +46,12 @@ public String new_Incidentnum;
 	}
 	
 	@And("I search created Incident")
-	public void isearchcreatedIncident() {
+	public void isearchcreatedIncident()throws InterruptedException {
 		incidentuser=new Incident_User();
-		Utility.wait(incidentuser.number_column);
-		incidentuser.number_column.click();
-		Utility.wait(incidentuser.Search_field);
+		Thread.sleep(10000);
+		incidentuser.Incidents.click();
+		incidentuser.Search_field.click();
+		incidentuser.Search_field.clear();
 		incidentuser.Search_field.sendKeys(new_Incidentnum);
 		incidentuser.Search_field.submit();
 		
@@ -60,21 +61,22 @@ public String new_Incidentnum;
 		incidentuser=new Incident_User();
 		Boolean flag=incidentuser.table_onerow.isDisplayed();
 		assertEquals(flag, true);
+		driver.close();
     
 	}
 	
 	@When("I Create New Incident and get Incident Number Format")
 	public void iCreateNewIncidentandgetIncidentNumberFormat() throws InterruptedException {
 		incidentuser=new Incident_User();
-		Utility.wait(incidentuser.history_tab);
-		incidentuser.history_tab.click();
-		incidentuser.create_incident.click();
 		Thread.sleep(10000);
 		driver.switchTo().frame(incidentuser.frame);
+		incidentuser.create_incident.click();
+		Thread.sleep(10000);
 		Utility.selectByText(incidentuser.select_urgency,"2 - Medium");
 		incidentuser.more_information.sendKeys("Test Parent Incident");
 		Utility.wait(incidentuser.submit_button);
 		Utility.scrollToElement_N_click(incidentuser.submit_button);
+		Thread.sleep(10000);
 		Utility.wait(incidentuser.get_IncidentNum);
 		new_Incidentnum=incidentuser.get_IncidentNum.getText();
 	}
@@ -86,7 +88,29 @@ public String new_Incidentnum;
 		Boolean flag=new_Incidentnum.contains("INC00100");
 		assertEquals(flag, true);
 		System.out.println(new_Incidentnum);
+		
     	
+    }
+    @When("I Navigate to Incidents and click on Attchment")
+    public void iNavigatetoIncidentsandclickonAttchment() throws InterruptedException {
+    	incidentuser=new Incident_User();
+		Thread.sleep(10000);
+		incidentuser.Incidents.click();
+		driver.switchTo().frame(incidentuser.frame);
+		Utility.wait_N_click(incidentuser.Click_firstIncident);
+		System.out.println("Incident Clicked");
+		Thread.sleep(10000);
+		incidentuser.manage_attachments.click();
+		System.out.println("Attachment Button clicked");
+		
+		
+		
+    	
+    }
+    
+    @After()
+    public void closeBrowser() {
+      driver.close();
     }
 
 }

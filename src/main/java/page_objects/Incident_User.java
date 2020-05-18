@@ -24,10 +24,12 @@ public class Incident_User extends base {
 	public WebElement frame;
 	@FindBy(xpath="//a[@id='history_tab']")
 	public WebElement history_tab;
-	@FindBy(xpath="//span[contains(text(),'Create Incident')]")
+	@FindBy(xpath="//a[contains(text(),'Create Incident')]")
 	public WebElement create_incident;
 	@FindBy(xpath="//span[contains(text(),'Incident')]")
 	public WebElement incident;
+	@FindBy(xpath="//div[text()=\"Incidents\"]")
+	public WebElement Incidents;
 	@FindBy(xpath="//a[@id='allApps_tab']")
 	public WebElement all_appstab;
 	@FindBy(xpath="//textarea[@id='IO:3f272c500a0a0b990059c24380a2bc02']")
@@ -42,7 +44,7 @@ public class Incident_User extends base {
 	public WebElement get_IncidentNum;
 	@FindBy(xpath="//button[@class='list_header_search_toggle icon-search btn btn-icon table-btn-lg']")
 	public WebElement Search_button;
-	@FindBy(xpath="//input[@id='3eba15eddbf0101026bb48703996196b_table_header_search_control']")
+	@FindBy(xpath="//input[@placeholder=\"Search\"]")
 	public WebElement Search_field;
 	@FindBy(xpath="//tr[@id='hdr_057bd9eddbf0101026bb4870399619ce']//a[@class='column_head list_hdrcell table-col-header'][contains(text(),'Number')]")
 	public WebElement number_column;
@@ -50,6 +52,12 @@ public class Incident_User extends base {
 	public WebElement table_onerow;
 	@FindBy(xpath="//select[@id=\"IO:5a33d0ef0a0a0b9b007b906f6c589c57\"]")
 	public WebElement select_urgency;
+	@FindBy(xpath="(//a[@class=\"linked formlink\"])[1]")
+	public WebElement Click_firstIncident;
+	@FindBy(xpath="//button[@title=\"Manage Attachments\"]")
+	public WebElement manage_attachments;
+	
+	
 	
 	
 	
