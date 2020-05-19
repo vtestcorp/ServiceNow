@@ -94,7 +94,6 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>3.8.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
   	<groupId>net.masterthought</groupId>

@@ -13,7 +13,8 @@ import cucumber.api.CucumberOptions;
 @CucumberOptions(features="src\\test\\resources\\feature", glue="stepdefinitions",
 
 plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber-reports/cucumber.json" }
-)//path of feature file and step def class
+		)//path of feature file and step def class
 public class testrunner_sample {
+	
 
 }

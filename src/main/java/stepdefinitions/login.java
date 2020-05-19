@@ -26,9 +26,8 @@ Incident_User incidentuser;
 		incidentuser=new Incident_User();
 		incidentuser.login(user,password);
     }
-	@Given("I Login to ServiceNow Application valid credentials")
-    public void iLogintoServiceNowApplicationvalidcredentials(DataTable dt) {
-		
+	@Given("I Login to ServiceNow Application with valid credentials")
+    public void iLoginToServiceNowApplicationWithValidCredentials(DataTable dt) {
 		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
 	    String user=list.get(0).get("UserID");
 	    String password=list.get(0).get("Password");
@@ -38,9 +37,7 @@ Incident_User incidentuser;
 	   
     }
 	
-	 @After()
-	    public void closeBrowser() {
-	      driver.close();
-	    }
+//	 @After()
+//	    
 
 }

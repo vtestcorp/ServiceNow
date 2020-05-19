@@ -79,6 +79,7 @@ public class Incident_User extends base {
 			Utility.wait(password);
 			password.sendKeys(Password);
 			login_button.click();
+			
 
 		}
 		public void switchtoframe(WebElement ele) {

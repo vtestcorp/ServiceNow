@@ -1,5 +1,7 @@
 package stepdefinitions;
 import cucumber.api.java.en.Given;
+import org.openqa.selenium.WebElement;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 //import io.cucumber.java.After;
 import static org.junit.Assert.*;
 import cucumber.api.java.After;
@@ -16,6 +18,7 @@ import util.Utility;
 public class Incidentuser_action extends base {
 Incident_User incidentuser;
 public String new_Incidentnum;
+
 	@When("I Create New Parent Incident")
 	public void iCreateNewParentIncident() {
 		incidentuser=new Incident_User();
@@ -31,24 +34,23 @@ public String new_Incidentnum;
 	@When("I Create New Incident")
 	public void iCreateNewIncident() throws InterruptedException {
 		incidentuser=new Incident_User();
-		Thread.sleep(10000);
+		Utility.load_page();
 		driver.switchTo().frame(incidentuser.frame);
 		incidentuser.create_incident.click();
-		Thread.sleep(10000);
+		Utility.load_page();
 		Utility.selectByText(incidentuser.select_urgency,"2 - Medium");
 		incidentuser.more_information.sendKeys("Test Parent Incident");
 		Utility.wait(incidentuser.submit_button);
 		Utility.scrollToElement_N_click(incidentuser.submit_button);
-		//Thread.sleep(10000);
 		Utility.wait(incidentuser.get_IncidentNum);
 		new_Incidentnum=incidentuser.get_IncidentNum.getText();
 		Utility.scrollToElement_N_click(incidentuser.Update_button);
 	}
 	
 	@And("I search created Incident")
-	public void isearchcreatedIncident()throws InterruptedException {
+	public void iSearchCreatedIncident()throws InterruptedException {
 		incidentuser=new Incident_User();
-		Thread.sleep(10000);
+		Utility.load_page();
 		incidentuser.Incidents.click();
 		incidentuser.Search_field.click();
 		incidentuser.Search_field.clear();
@@ -57,49 +59,53 @@ public String new_Incidentnum;
 		
 	}
 	@Then("I verify Incident found and Incident appears as saved")
-	public void iverifyIncidentfoundandIncidentappearsassaved() {
+	public void iVerifyIncidentfoundAndIncidentAppearsAsSaved() {
 		incidentuser=new Incident_User();
 		Boolean flag=incidentuser.table_onerow.isDisplayed();
 		assertEquals(flag, true);
-		driver.close();
+		closeBrowser();
     
 	}
 	
 	@When("I Create New Incident and get Incident Number Format")
-	public void iCreateNewIncidentandgetIncidentNumberFormat() throws InterruptedException {
+	public void iCreateNewIncidentAndGetIncidentNumberFormat() throws InterruptedException {
 		incidentuser=new Incident_User();
-		Thread.sleep(10000);
+		Utility.load_page();
+		//Utility.dashboard_wait();
 		driver.switchTo().frame(incidentuser.frame);
 		incidentuser.create_incident.click();
-		Thread.sleep(10000);
+		Utility.load_page();
 		Utility.selectByText(incidentuser.select_urgency,"2 - Medium");
 		incidentuser.more_information.sendKeys("Test Parent Incident");
 		Utility.wait(incidentuser.submit_button);
 		Utility.scrollToElement_N_click(incidentuser.submit_button);
-		Thread.sleep(10000);
+		Utility.load_page();
 		Utility.wait(incidentuser.get_IncidentNum);
 		new_Incidentnum=incidentuser.get_IncidentNum.getText();
 	}
 	
     @Then("I verify Number field is autopopulated as with prefix INC with 7 digits starting at 10,000")
-    public void iverifyIncidentnumberformat() {
+    public void iVerifyIncidentNumberFormat() {
     	incidentuser=new Incident_User();
     	System.out.println(new_Incidentnum);
-		Boolean flag=new_Incidentnum.contains("INC00100");
-		assertEquals(flag, true);
+    	String digits=new_Incidentnum.substring(3, 9);
+    	if(digits.length()==7) {
+		Boolean flag=new_Incidentnum.contains("INC0010");
+		assertEquals(flag, true);}
 		System.out.println(new_Incidentnum);
+		closeBrowser();
 		
     	
     }
-    @When("I Navigate to Incidents and click on Attchment")
-    public void iNavigatetoIncidentsandclickonAttchment() throws InterruptedException {
+    @When("I Navigate to Incidents and click on Attachment")
+    public void iNavigateToIncidentsAndClickOnAttachment() throws InterruptedException {
     	incidentuser=new Incident_User();
-		Thread.sleep(10000);
+    	Utility.load_page();
 		incidentuser.Incidents.click();
 		driver.switchTo().frame(incidentuser.frame);
 		Utility.wait_N_click(incidentuser.Click_firstIncident);
 		System.out.println("Incident Clicked");
-		Thread.sleep(10000);
+		Utility.load_page();
 		incidentuser.manage_attachments.click();
 		System.out.println("Attachment Button clicked");
 		
@@ -108,9 +114,6 @@ public String new_Incidentnum;
     	
     }
     
-    @After()
-    public void closeBrowser() {
-      driver.close();
-    }
+
 
 }
